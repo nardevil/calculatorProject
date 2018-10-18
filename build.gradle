@@ -29,4 +29,5 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     compile 'org.json:json:20160810'
     compile 'com.fathzer:javaluator:3.0.2'
+    compile 'com.google.firebase:firebase-admin:4.1.1'
 }
