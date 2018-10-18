@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.json.*;
 import com.fathzer.soft.javaluator.DoubleEvaluator;
 
+@CrossOrigin(origins = "https://mb-calculator-react.firebaseapp.com/")
 @RestController
 public class HelloWorldController {
 
-    @CrossOrigin
+
     @RequestMapping("/calculate")
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
