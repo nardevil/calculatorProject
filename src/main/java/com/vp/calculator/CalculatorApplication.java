@@ -20,7 +20,7 @@ public class CalculatorApplication {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/calculate").allowedOrigins("https://mb-calculator-react.firebaseapp.com/");
+                registry.addMapping("/calculate").allowedOrigins("https://calculator9000.herokuapp.com/calculate");
             }
         };
     }
