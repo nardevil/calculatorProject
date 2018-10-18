@@ -10,21 +10,21 @@ import com.fathzer.soft.javaluator.DoubleEvaluator;
 @RestController
 public class HelloWorldController {
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://mb-calculator-react.firebaseapp.com/")
     @RequestMapping("/calculate")
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
-        boolean isValid = true;
         JSONObject response = new JSONObject();
         response.put("message", "error");
         response.put("operations", "Error - wrong input");
 
-        if(!Character.isDigit(operations.charAt(0)))
+        /**if(!Character.isDigit(operations.charAt(0)) && (operations.charAt(0) != '-') && (operations.charAt(0) != '+'))
         {
+            String var = Character.toString(operations.charAt(0));
             return response.toString();
         }
         else{
-            for (int i = 0; i < operations.length()-1; i++){
+            for (int i = 1; i < operations.length()-1; i++){
                 if(Character.isDigit(operations.charAt(i)) || Character.isDigit(operations.charAt(i+1)))
                 {
                 }
@@ -32,7 +32,7 @@ public class HelloWorldController {
                     return response.toString();
                 }
                 }
-            }
+            }*/
 
         Double operationResult = new DoubleEvaluator().evaluate(operations);
         response.put("message", "success");
