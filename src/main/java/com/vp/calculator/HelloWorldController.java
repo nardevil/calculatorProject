@@ -10,7 +10,7 @@ import com.fathzer.soft.javaluator.DoubleEvaluator;
 @RestController
 public class HelloWorldController {
 
-    /**@CrossOrigin(origins = "http://localhost:3000")*/
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/calculate")
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
