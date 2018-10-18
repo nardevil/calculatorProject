@@ -12,7 +12,7 @@ public class HelloWorldController {
 
 
     @RequestMapping("/calculate")
-    @CrossOrigin(origins = "https://mb-calculator-react.firebaseapp.com/")
+    @CrossOrigin(origins = "https://mb-calculator-react.firebaseapp.com")
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
         JSONObject response = new JSONObject();
