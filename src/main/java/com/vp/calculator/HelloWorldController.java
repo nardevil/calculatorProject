@@ -10,7 +10,7 @@ import com.fathzer.soft.javaluator.DoubleEvaluator;
 @RestController
 public class HelloWorldController {
 
-    /**@CrossOrigin("https://mb-calculator-react.firebaseapp.com/")*/
+    @CrossOrigin
     @RequestMapping("/calculate")
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
