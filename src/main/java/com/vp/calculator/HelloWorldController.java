@@ -15,11 +15,11 @@ public class HelloWorldController {
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
         JSONObject response = new JSONObject();
+        response.put("message", "error");
+        response.put("operations", "Error - bad input");
 
-
-        /**if(!Character.isDigit(operations.charAt(0)) && (operations.charAt(0) != '-') && (operations.charAt(0) != '+'))
+        if(!Character.isDigit(operations.charAt(0)))
         {
-            String var = Character.toString(operations.charAt(0));
             return response.toString();
         }
         else{
@@ -31,22 +31,13 @@ public class HelloWorldController {
                     return response.toString();
                 }
                 }
-            }*/
+            }
 
-        try
-        {
             Double operationResult = new DoubleEvaluator().evaluate(operations);
             response.put("message", "success");
             response.put("operations", String.valueOf(operationResult));
-        }
-        catch (ArithmeticException ex)
-        {
-            response.put("message", "error");
-            response.put("operations", "Error - bad input");
-        }
-        finally {
+
             return response.toString();
-        }
         }
     }
 
