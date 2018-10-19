@@ -8,7 +8,7 @@ import org.json.*;
 import com.fathzer.soft.javaluator.DoubleEvaluator;
 
 @RestController
-public class HelloWorldController {
+public class CalculateController {
 
     /**
      *
@@ -18,34 +18,9 @@ public class HelloWorldController {
 
     @RequestMapping("/calculate")
     @CrossOrigin
-    public String helloWorldMethod(@RequestParam(value = "operations") String operations){
+    public String calculateMethod(@RequestParam(value = "operations") String operations){
 
         JSONObject response = new JSONObject();
-
-
-        /**
-         Check if 1st char is a digit
-         If not then return Error message
-
-        if(!Character.isDigit(operations.charAt(0)))
-        {
-            return response.toString();
-        }
-        else{
-            for (int i = 1; i < operations.length()-1; i++){
-                /**
-                 Check if atleast one char is a number
-                 If both chars are mathematical operators then return Error message
-
-                if(Character.isDigit(operations.charAt(i)) || Character.isDigit(operations.charAt(i+1)))
-                {
-                }
-                else {
-                    return response.toString();
-                }
-                }
-            }
-         */
             try{
                 Double operationResult = new DoubleEvaluator().evaluate(operations);
                 response.put("message", "success");
