@@ -42,9 +42,11 @@ public class HelloWorldController {
         catch (ArithmeticException ex)
         {
             response.put("message", "error");
-            response.put("operations", "Error - wrong input");
+            response.put("operations", "Error - bad input");
         }
-        return response.toString();
+        finally {
+            return response.toString();
+        }
         }
     }
 
