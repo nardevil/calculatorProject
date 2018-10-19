@@ -11,7 +11,7 @@ import com.fathzer.soft.javaluator.DoubleEvaluator;
 public class HelloWorldController {
 
     @RequestMapping("/calculate")
-    @CrossOrigin(origins = "https://mb-calculator-react.firebaseapp.com")
+    @CrossOrigin
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
         JSONObject response = new JSONObject();
