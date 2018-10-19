@@ -15,8 +15,7 @@ public class HelloWorldController {
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
         JSONObject response = new JSONObject();
-        response.put("message", "error");
-        response.put("operations", "Error - wrong input");
+
 
         /**if(!Character.isDigit(operations.charAt(0)) && (operations.charAt(0) != '-') && (operations.charAt(0) != '+'))
         {
@@ -34,9 +33,17 @@ public class HelloWorldController {
                 }
             }*/
 
-        Double operationResult = new DoubleEvaluator().evaluate(operations);
-        response.put("message", "success");
-        response.put("operations", String.valueOf(operationResult));
+        try
+        {
+            Double operationResult = new DoubleEvaluator().evaluate(operations);
+            response.put("message", "success");
+            response.put("operations", String.valueOf(operationResult));
+        }
+        catch (ArithmeticException ex)
+        {
+            response.put("message", "error");
+            response.put("operations", "Error - wrong input");
+        }
         return response.toString();
         }
     }
