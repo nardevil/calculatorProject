@@ -10,13 +10,22 @@ import com.fathzer.soft.javaluator.DoubleEvaluator;
 @RestController
 public class HelloWorldController {
 
+    /**
+     *
+     * @param operations - a string of numbers and mathematical operations
+     * @return - returns a string with message(success or error) and result (if the input was valid)
+     */
+
     @RequestMapping("/calculate")
     @CrossOrigin
     public String helloWorldMethod(@RequestParam(value = "operations") String operations){
 
         JSONObject response = new JSONObject();
-        response.put("message", "error");
-        response.put("operations", "Error - bad input");
+
+
+        /**
+         Check if 1st char is a digit
+         If not then return Error message
 
         if(!Character.isDigit(operations.charAt(0)))
         {
@@ -24,6 +33,10 @@ public class HelloWorldController {
         }
         else{
             for (int i = 1; i < operations.length()-1; i++){
+                /**
+                 Check if atleast one char is a number
+                 If both chars are mathematical operators then return Error message
+
                 if(Character.isDigit(operations.charAt(i)) || Character.isDigit(operations.charAt(i+1)))
                 {
                 }
@@ -32,12 +45,19 @@ public class HelloWorldController {
                 }
                 }
             }
-
-            Double operationResult = new DoubleEvaluator().evaluate(operations);
-            response.put("message", "success");
-            response.put("operations", String.valueOf(operationResult));
-
-            return response.toString();
+         */
+            try{
+                Double operationResult = new DoubleEvaluator().evaluate(operations);
+                response.put("message", "success");
+                response.put("operations", String.valueOf(operationResult));
+                }
+            catch (Exception ex) {
+                response.put("message", "error");
+                response.put("operations", "Error - bad input");
+                }
+            finally {
+                    return response.toString();
+                    }
         }
     }
 
